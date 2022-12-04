@@ -1,0 +1,42 @@
+
+<div class="container" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-md-7">
+
+<h3>{{ productName }} Listesi</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let p of products"
+      [class.bg-secondary]="p.isActive == false"
+    >
+      <td>{{ p.productId }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.price }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="onSelectedProduct(p)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteProduct(p)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <div class="col-md-5">
+
+      <app-product-details [product]="selectedProduct" [products]="products"></app-product-details>
+      <app-product-form [products]="products"></app-product-form>
+    </div>
+  </div>
+</div>
+
+
+
